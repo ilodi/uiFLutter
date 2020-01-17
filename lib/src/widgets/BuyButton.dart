@@ -32,7 +32,7 @@ class BuyButton extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Colors.red,
                 borderRadius:
-                    BorderRadius.only(topLeft: Radius.circular(50.0))),
+                    BorderRadius.only(topLeft: Radius.circular(34.0))),
           ),
         )
       ],
