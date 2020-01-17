@@ -19,16 +19,17 @@ class BuyButton extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 20.0)),
+                        fontSize: 18.0)),
                 SizedBox(width: 5.0),
                 Icon(
                   FontAwesomeIcons.arrowRight,
                   color: Colors.white,
+                   size: 13.0,
                 ),
               ],
             ),
             width: size.width * 0.4,
-            height: 75.0,
+            height: 44.0,
             decoration: BoxDecoration(
                 color: Colors.red,
                 borderRadius:

@@ -1,23 +1,30 @@
+import 'package:beats/src/models/producto_model.dart';
 import 'package:flutter/material.dart';
+import 'package:beats/src/providers/productos_providers.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class CardsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final productosProv = Provider.of<ProductosProvider>(context);
+
     return Container(
       width: double.infinity,
       height: 460.0,
       child: PageView(
         controller: PageController(viewportFraction: 0.89),
-        children: <Widget>[
-        _Card(),
-        _Card()
-      ],),
+        children: productosProv.productos.map((prod) => _Card(prod)).toList(),
+      ),
     );
   }
 }
 
 class _Card extends StatelessWidget {
+//La tarjeta necesita un producto y el primero es
+  ProductoModel prod;
+  _Card(this.prod);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,18 +32,18 @@ class _Card extends StatelessWidget {
         children: <Widget>[
           Row(
             children: <Widget>[
-              _PrimeraDescripcion(),
+              _PrimeraDescripcion(prod),
               SizedBox(
                 width: 55.0,
               ),
-              _TarjetaDescripcion()
+              _TarjetaDescripcion(prod)
             ],
           ),
           Positioned(
             top: 90,
             left: 50,
             child: Image(
-              image: AssetImage('assets/blue.png'),
+              image: AssetImage('assets/${prod.url}'),
               width: 160.0,
             ),
           )
@@ -47,6 +54,8 @@ class _Card extends StatelessWidget {
 }
 
 class _TarjetaDescripcion extends StatelessWidget {
+  ProductoModel prod;
+  _TarjetaDescripcion(this.prod);
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -58,7 +67,7 @@ class _TarjetaDescripcion extends StatelessWidget {
         child: Container(
           width: size.width * 0.55,
           height: 340.0,
-          color: Color(0xfff0B3FA2),
+          color: Color(prod.color),
           child: Column(
             children: <Widget>[
               SizedBox(
@@ -70,12 +79,12 @@ class _TarjetaDescripcion extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
-                    Text('Warriors',
+                    Text(prod.titulo,
                         style: TextStyle(
                             color: Colors.white24,
                             fontSize: 30,
                             fontWeight: FontWeight.bold)),
-                    Text('Royal Blue',
+                    Text(prod.subtitulo,
                         style: TextStyle(
                             color: Colors.white24,
                             fontSize: 30,
@@ -88,7 +97,7 @@ class _TarjetaDescripcion extends StatelessWidget {
                 padding: EdgeInsets.all(10.0),
                 child: Row(
                   children: <Widget>[
-                    Text('Beats Studio3 Wirless',
+                    Text(prod.nombre,
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold)),
                     Spacer(),
@@ -104,7 +113,7 @@ class _TarjetaDescripcion extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Container(
-                    child: Text('359.95',
+                    child: Text('\$${prod.precio}',
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold)),
                     width: 80.0,
@@ -132,6 +141,9 @@ class _TarjetaDescripcion extends StatelessWidget {
 }
 
 class _PrimeraDescripcion extends StatelessWidget {
+
+  ProductoModel prod;
+  _PrimeraDescripcion(this.prod);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -147,7 +159,7 @@ class _PrimeraDescripcion extends StatelessWidget {
             ),
             SizedBox(width: 15.0),
             Text(
-              'Batterry',
+              '${prod.bateria} -Hr Batterry',
               style: TextStyle(fontSize: 12.0),
             ),
             SizedBox(
