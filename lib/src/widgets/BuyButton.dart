@@ -12,21 +12,27 @@ class BuyButton extends StatelessWidget {
           bottom: 0.0,
           right: 0.0,
           child: Container(
-            
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('Enter', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20.0)),
+                Text('Entrar',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0)),
                 SizedBox(width: 5.0),
-                 Icon(FontAwesomeIcons.arrowRight,color:Colors.white ,),
+                Icon(
+                  FontAwesomeIcons.arrowRight,
+                  color: Colors.white,
+                ),
               ],
             ),
-            width: size.width * 0.3,
+            width: size.width * 0.4,
             height: 75.0,
             decoration: BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(50.0) )
-            ),
+                color: Colors.red,
+                borderRadius:
+                    BorderRadius.only(topLeft: Radius.circular(50.0))),
           ),
         )
       ],

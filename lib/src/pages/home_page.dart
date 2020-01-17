@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:beats/src/widgets/BuyButton.dart';
 import 'package:beats/src/widgets/fondo_circular.dart';
 import 'package:beats/src/widgets/CustomAppBar.dart';
+import 'package:beats/src/widgets/card_view.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -14,15 +15,12 @@ class HomePage extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[CustomAppBar(), _Header()],
+              children: <Widget>[CustomAppBar(), _Header(), CardsView()],
             ),
           ),
         ),
         BuyButton(),
       ],
-
-
-
     ));
   }
 }
